@@ -20,11 +20,11 @@ class WasteOfSession {
         throw(error)
       })
   }
-  post(content) {
+  post(content, repost) {
     return axios
       .post('https://api.wasteof.money/posts', {
         "post": content,
-        "repost": null
+        "repost": repost
       },
       {
       headers: {
