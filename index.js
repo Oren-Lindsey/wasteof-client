@@ -564,9 +564,9 @@ class WasteOfSession {
       })
   }
   postAndLove(content, repost) {
-    post(content, repost)
+    this.post(content, repost)
       .then(data => {
-        toggleLove(data.id)
+        this.toggleLove(data.id)
       })
   }
 }
