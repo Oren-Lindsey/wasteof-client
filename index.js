@@ -563,5 +563,11 @@ class WasteOfSession {
         throw(error)
       })
   }
+  postAndLove(content, repost) {
+    post(content, repost)
+      .then(data => {
+        toggleLove(data.id)
+      })
+  }
 }
 module.exports = WasteOfSession;
