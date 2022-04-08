@@ -303,6 +303,21 @@ class WasteOfSession {
         throw(error)
       })
   }
+  getAdminMessages() {
+    return axios
+      .get(`https://api.wasteof.money/messages/admin`, {
+        headers: {
+          "Authorization": this.token
+        }
+      })
+      .then(res => {
+        var data = res.data
+        return data
+      })
+      .catch(error => {
+        throw(error)
+      })
+  }
   getMessagesCount() {
     return axios
       .get(`https://api.wasteof.money/messages/count`, {
