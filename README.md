@@ -9,8 +9,8 @@ const pass = "password"
 
 let wasteof = new WasteOfSession("jeffalo", pass)
 wasteof.login()
-  .then(data => {
-    wasteof.post("aaa", null)
+  .then(async function() {
+    await wasteof.post("aaa", null)
   })
 ```
 # Docs
