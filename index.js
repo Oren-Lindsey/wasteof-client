@@ -6,7 +6,7 @@ class WasteOfSession {
     this.pass = pass
   }
   login() {
-    return axios
+    axios
       .post('https://api.wasteof.money/session', {
         "username":this.username,
         "password":this.pass
@@ -20,11 +20,11 @@ class WasteOfSession {
         throw(error)
       })
   }
-  post(content, repost) {
-    return axios
+  post(content) {
+    axios
       .post('https://api.wasteof.money/posts', {
         "post": content,
-        "repost": repost
+        "repost": null
       },
       {
       headers: {
@@ -40,7 +40,7 @@ class WasteOfSession {
       })
   }
   editPost(id, content) {
-    return axios
+    axios
       .put(`https://api.wasteof.money/posts/${id}`, {
         "post": content,
       },
@@ -50,7 +50,7 @@ class WasteOfSession {
       }
             })
       .then(res => {
-        var data = res.data
+        var id = res.data
         return data
       })
       .catch(error => {
@@ -58,7 +58,7 @@ class WasteOfSession {
       })
   }
   reportPost(id, reason) {
-    return axios
+    axios
       .post(`https://api.wasteof.money/posts/${id}/report`, {
         "type": "none",
         "reason": reason
@@ -85,7 +85,7 @@ class WasteOfSession {
       }
             })
       .then(res => {
-        var data = res.data
+        data = res.data
         return data
       })
       .catch(error => {
@@ -101,15 +101,15 @@ class WasteOfSession {
       }
             })
       .then(res => {
-        var data = res.data
+        data = res.data
         return data
       })
       .catch(error => {
         throw(error)
       })
   }
-  postWallComment(content, username, parent) {
-    return axios
+  makeWallComment(content, username, parent) {
+    axios
       .post(`https://api.wasteof.money/users/${username}/wall`, {
         "content": content,
         "parent": parent
@@ -120,7 +120,7 @@ class WasteOfSession {
       }
             })
       .then(res => {
-        var data = res.data
+        data = res.data
         return data
       })
       .catch(error => {
@@ -128,7 +128,7 @@ class WasteOfSession {
       })
   }
   toggleLove(id) {
-    return axios
+    axios
       .post(`https://api.wasteof.money/posts/${id}/loves`, {
       },
       {
@@ -145,7 +145,7 @@ class WasteOfSession {
       })
   }
   pinPost(id) {
-    return axios
+    axios
       .post(`https://api.wasteof.money/posts/${id}/pin`, {
       },
       {
@@ -162,7 +162,7 @@ class WasteOfSession {
       })
   }
   unpinPost(id) {
-    return axios
+    axios
       .post(`https://api.wasteof.money/posts/${id}/unpin`, {
       },
       {
@@ -179,7 +179,7 @@ class WasteOfSession {
       })
   }
   setBio(content) {
-    return axios
+    axios
       .put(`https://api.wasteof.money/users/${this.username}/bio`, {
         "bio":content
       },
@@ -196,8 +196,8 @@ class WasteOfSession {
         throw(error)
       })
   }
-  getPostData(id) {
-    return axios
+  getSinglePost(id) {
+    axios
       .get(`https://api.wasteof.money/posts/${id}`)
       .then(res => {
         var data = res.data
@@ -208,7 +208,7 @@ class WasteOfSession {
       })
   }
   checkIfUserLovedPost(id, user) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/posts/${id}/loves/${user}`)
       .then(res => {
         var data = res.data
@@ -218,8 +218,8 @@ class WasteOfSession {
         throw(error)
       })
   }
-  getCommentData(id) {
-    return axios
+  getSingleComment(id) {
+    axios
       .get(`https://api.wasteof.money/comments/${id}`)
       .then(res => {
         var data = res.data
@@ -229,8 +229,8 @@ class WasteOfSession {
         throw(error)
       })
   }
-  getCommentsOnPost(id, page) {
-    return axios
+  getCommentsOfPost(id, page) {
+    axios
       .get(`https://api.wasteof.money/posts/${id}/comments?page=${page}`)
       .then(res => {
         var data = res.data
@@ -240,8 +240,8 @@ class WasteOfSession {
         throw(error)
       })
   }
-  getRepliesToComment(id, page) {
-    return axios
+  getRepliesOfComment(id, page) {
+    axios
       .get(`https://api.wasteof.money/comments/${id}/replies?page=${page}`)
       .then(res => {
         var data = res.data
@@ -252,7 +252,7 @@ class WasteOfSession {
       })
   }
   getTrendingUsers() {
-    return axios
+    axios
       .get(`https://api.wasteof.money/explore/users/top`)
       .then(res => {
         var data = res.data
@@ -263,7 +263,7 @@ class WasteOfSession {
       })
   }
   getTrendingPosts(timeframe) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/explore/posts/trending?timeframe=${timeframe}`)
       .then(res => {
         var data = res.data
@@ -274,7 +274,7 @@ class WasteOfSession {
       })
   }
   getReadMessages() {
-    return axios
+    axios
       .get(`https://api.wasteof.money/messages/read`, {
         headers: {
           "Authorization": this.token
@@ -289,7 +289,7 @@ class WasteOfSession {
       })
   }
   getUnreadMessages() {
-    return axios
+    axios
       .get(`https://api.wasteof.money/messages/unread`, {
         headers: {
           "Authorization": this.token
@@ -304,7 +304,7 @@ class WasteOfSession {
       })
   }
   getAdminMessages() {
-    return axios
+    axios
       .get(`https://api.wasteof.money/messages/admin`, {
         headers: {
           "Authorization": this.token
@@ -319,7 +319,7 @@ class WasteOfSession {
       })
   }
   getMessagesCount() {
-    return axios
+    axios
       .get(`https://api.wasteof.money/messages/count`, {
         headers: {
           "Authorization": this.token
@@ -334,7 +334,7 @@ class WasteOfSession {
       })
   }
   markMessagesAsRead(ids) {
-    return axios
+    axios
       .post(`https://api.wasteof.money/messages/mark/read`, {
         "messages":ids
       },
@@ -352,7 +352,7 @@ class WasteOfSession {
       })
   }
   markMessagesAsUnread(ids) {
-    return axios
+    axios
       .post(`https://api.wasteof.money/messages/mark/unread`, {
         "messages":ids
       },
@@ -370,7 +370,7 @@ class WasteOfSession {
       })
   }
   getUsernameFromId(id) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/username-from-id/${id}`)
       .then(res => {
         var data = res.data
@@ -381,7 +381,7 @@ class WasteOfSession {
       })
   }
   checkUsername(username) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/username-available?username=${username}`)
       .then(res => {
         var data = res.data
@@ -392,7 +392,7 @@ class WasteOfSession {
       })
   }
   searchUsers(query) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/search/users?q=${query}`)
       .then(res => {
         var data = res.data
@@ -403,7 +403,7 @@ class WasteOfSession {
       })
   }
   searchPosts(query) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/search/posts?q=${query}`)
       .then(res => {
         var data = res.data
@@ -414,7 +414,7 @@ class WasteOfSession {
       })
   }
   getCurrentSession() {
-    return axios
+    axios
       .get(`https://api.wasteof.money/session`, {
         headers: {
           "Authorization": this.token
@@ -429,7 +429,7 @@ class WasteOfSession {
       })
   }
   logout() {
-    return axios
+    axios
       .delete(`https://api.wasteof.money/session`, {
         headers: {
           "Authorization": this.token
@@ -444,7 +444,7 @@ class WasteOfSession {
       })
   }
   getWallComments(username, page) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/users/${username}/wall?page=${page}`)
       .then(res => {
         var data = res.data
@@ -455,7 +455,7 @@ class WasteOfSession {
       })
   }
   getUserData(username) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/users/${username}`)
       .then(res => {
         var data = res.data
@@ -466,7 +466,7 @@ class WasteOfSession {
       })
   }
   getFollowersOfUser(username) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/users/${username}/followers`)
       .then(res => {
         var data = res.data
@@ -477,7 +477,7 @@ class WasteOfSession {
       })
   }
   getFollowingOfUser(username) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/users/${username}/following`)
       .then(res => {
         var data = res.data
@@ -488,7 +488,7 @@ class WasteOfSession {
       })
   }
   seeIfUserIsFollowingOtherUser(username1, username2) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/users/${username2}/followers/${username2}`)
       .then(res => {
         var data = res.data
@@ -499,7 +499,7 @@ class WasteOfSession {
       })
   }
   getProfilePicture(username) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/users/${username}/picture`)
       .then(res => {
         var data = res.data
@@ -510,7 +510,7 @@ class WasteOfSession {
       })
   }
   getBanner(username) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/users/${username}/banner`)
       .then(res => {
         var data = res.data
@@ -521,7 +521,7 @@ class WasteOfSession {
       })
   }
   getPostsOfUser(username, page) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/users/${username}/posts?page=${page}`)
       .then(res => {
         var data = res.data
@@ -532,7 +532,7 @@ class WasteOfSession {
       })
   }
   getFeedOfUser(username) {
-    return axios
+    axios
       .get(`https://api.wasteof.money/users/${username}/following/posts`)
       .then(res => {
         var data = res.data
@@ -543,7 +543,7 @@ class WasteOfSession {
       })
   }
   toggleFollow(username) {
-    return axios
+    axios
       .post(`https://api.wasteof.money/users/${username}/followers`, { 
       },
       {
@@ -559,30 +559,5 @@ class WasteOfSession {
         throw(error)
       })
   }
-  postComment(id, content, parent) {
-    return axios
-      .post(`https://api.wasteof.money/posts/${id}/comments`, {
-        "content":content,
-        "parent":parent
-      },
-      {
-        headers: {
-          "Authorization": this.token
-        }
-            })
-      .then(res => {
-        var data = res.data
-        return data
-      })
-      .catch(error => {
-        throw(error)
-      })
-  }
-  postAndLove(content, repost) {
-    this.post(content, repost)
-      .then(data => {
-        this.toggleLove(data.id)
-      })
-  }
 }
-module.exports = WasteOfSession;
+module.exports = WasteOfSession
