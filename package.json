@@ -9,7 +9,7 @@
   "author": "Oren Lindsey",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.25.0",
+    "axios": "^0.27.2",
     "wasteof-client": "^0.3.0"
   },
   "homepage": "https://github.com/Oren-Lindsey/wasteof-client",
