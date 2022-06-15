@@ -1,4 +1,5 @@
-## Edit: this is not the actual source of it, its a few commits behind and has bugs. I'm too lazy to merge the actual source
+## deprecated
+wasteof-client 3.0 will come out very soon, please use that instead. The new source will be at https://github.com/Oren-Lindsey/wasteof-client3
 # wasteof-client
 wasteof-client is an npm package for wasteof.money.
 # Installation
